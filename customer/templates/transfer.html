@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Account Transfer</title>
+{% endblock %}
+
+{% block content %}
+
+<h2>Welcome {{ user.username }}</h2>
+
+    <h3>Current Balance: {{ balance }} /-</h3><br>
+
+<form method="post" action="{% url 'customer:result' %}">
+{% csrf_token %}
+<table>
+    <tr><td>Amount to transfer:</td><td><input type="number" name="amount" id="amount"/></td></tr>
+    <tr><td>Input Account Number:</td><td><input type="text" name="acc" id="acc"/></td></tr>
+    <tr><td></td><td><input type="submit" value="Submit"/></td></tr>
+</table>
+</form>
+
+{% endblock %}

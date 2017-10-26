@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Withdrawal</title>
+{% endblock %}
+
+{% block content %}
+
+<h2>Welcome {{ user.username }}</h2>
+    {% for user in set %}
+    <h3>Current Balance: {{ user.balance }} /-</h3><br>
+{% endfor %}
+<form method="post" action="{% url "customer:amount" %}">
+{% csrf_token %}
+Amount to withdraw:<input type="number" name="withdraw" id="withdraw"/><br>
+<input type="submit" value="Submit"/>
+</form>
+
+{% endblock %}

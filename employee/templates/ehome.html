@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Employee Page</title>
+{% endblock %}
+
+{% block content %}
+    <ul>
+    {% if user.is_authenticated %}
+        <h3>Welcome {{ user.username }}</h3>
+        <h4>Services</h4>
+        <li><a href="{% url "employee:customer" %}">Customer Details</a></li>
+        <li><a href="{% url "employee:search" %}">Transaction Search</a></li>
+    {% endif %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Deposit</title>
+{% endblock %}
+
+{% block content %}
+
+<h2>Welcome {{ user.username }}</h2>
+
+    <h3>Current Balance: {{ balance }} /-</h3>
+<br>
+<form method="post" action="{% url "customer:amount2" %}">
+{% csrf_token %}
+Amount to deposit:<input type="number" name="deposit" id="deposit"/><br>
+<input type="submit" value="Submit"/>
+</form>
+
+{% endblock %}

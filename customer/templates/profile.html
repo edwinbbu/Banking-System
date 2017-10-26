@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Profile</title>
+{% endblock %}
+
+{% block content %}
+
+    {% for i in data %}
+    <p>Name:<b>{{ i.name }}</b>  <br>
+    </p>
+    <p>Age: <b>{{ i.age }}</b> <br>
+    </p><p>Phone:  <b>{{ i.phone }}</b><br>
+    </p><p>Street:  <b>{{ i.street }}</b><br>
+    </p><p>City:  <b>{{ i.city }}</b><br>
+    </p><p>Country:  <b>{{ i.country }}</b><br>
+    </p><p>account_no: <b> {{ i.account_no }}</b><br>
+    </p>
+        <h3>Balance: {{ i.balance }} /-</h3>
+    {% endfor %}
+
+{% endblock %}
