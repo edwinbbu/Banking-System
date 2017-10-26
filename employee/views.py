@@ -40,7 +40,7 @@ def details(request, acc):
 @login_required
 def search(request):
     tlist=Transaction.objects.all()
-    tfilter=TransactionFilter(request.GET, query_set=tlist)
+    tfilter=TransactionFilter(request.GET, queryset=tlist)
     context={
         'filter':tfilter
     }
