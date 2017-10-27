@@ -16,7 +16,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/scrolling-nav.css' %}" rel="stylesheet">
-
+    <link href="{% static 'css/daterangepicker.css' %}" rel="stylesheet">
   </head>
 
   <body id="page-top">
@@ -78,14 +78,15 @@
     </section>
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}'"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
     <!-- Plugin JavaScript -->
     <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
     <!-- Custom JavaScript for this theme -->
     <script src="{% static 'js/scrolling-nav.js' %}"></script>
-
+{% block script %}
+  {% endblock %}
   </body>
 
 </html>

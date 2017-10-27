@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block content %}
     <h3>Search Transaction</h3>
@@ -21,4 +22,30 @@
     </tr>
   {% endfor %}
   </table>
-{% endblock %}
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'js/moment.min.js' %}"></script>
+<script src="{% static 'js/daterangepicker.js' %}"></script>
+<script>
+	$(document).ready(function() {
+        $('.tdate').daterangepicker({
+          "singleDatePicker": true,
+          "timePicker": false,
+          "autoUpdateInput": true,
+          "autoApply": true,
+
+          locale: {
+            format: 'YYYY-MM-DD'
+          },
+          // calender_style: "picker_4",
+          "showDropdowns": true
+        }, function(start, end, label) {
+          console.log(start.toISOString(), end.toISOString(), label);
+        });
+
+
+      });
+
+</script>
+{% endblock script %}
