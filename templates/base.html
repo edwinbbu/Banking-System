@@ -31,7 +31,11 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
-
+                {% if user.is_superuser %}
+                    <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url "employee:index" %}">Employee</a>
+            </li>
+                {% endif %}
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{% url 'customer:profile' %}">Profile</a>
             </li>
