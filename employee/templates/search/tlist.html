@@ -1,13 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <h3>Search Transaction</h3>
   <form method="get">
-    {{ filter.form.as_p }}
+    {{ filter.form }}
     <button type="submit">Search</button>
   </form>
-  <ul>
+    <br>
+<h3>Transaction Details</h3>
+  <table id="transaction">
+
+  <tr><th>Id</th><th>User</th><th>Amount</th><th>Type</th><th>Time</th></tr>
   {% for transaction in filter.qs %}
-    <li>{{ transaction.user }} - {{ transaction.type }}</li>
+    <tr>
+        <td>{{ transaction.transaction_id }}</td>
+        <td>{{ transaction.user }}</td>
+        <td>{{ transaction.amount }}</td>
+        <td>{{ transaction.type }}</td>
+        <td>{{ transaction.transaction_time }}</td>
+    </tr>
   {% endfor %}
-  </ul>
+  </table>
 {% endblock %}

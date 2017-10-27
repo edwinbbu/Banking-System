@@ -41,6 +41,7 @@ def details(request, acc):
 def search(request):
     tlist=Transaction.objects.all()
     tfilter=TransactionFilter(request.GET, queryset=tlist)
+
     context={
         'filter':tfilter
     }

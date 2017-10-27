@@ -4,4 +4,4 @@ from transaction.models import Transaction
 class TransactionFilter(django_filters.FilterSet):
     class Meta:
         model=Transaction
-        fields=['user',]
+        fields=['user','type','transaction_id']
