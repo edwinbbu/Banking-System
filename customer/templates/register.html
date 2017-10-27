@@ -14,7 +14,7 @@
             {{ customerform }}
         </table>
 
-<tr><td><input type="submit" value="Submit" name="submit"/></td></tr>
+<tr><td><input type="submit" value="{% if not type == "edit" %}Submit{% else %}Update{% endif %}" name="submit"/></td></tr>
 </form>
 
 {% endblock %}

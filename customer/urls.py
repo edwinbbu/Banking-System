@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^deposit/', views.deposit, name='deposit'),
     url(r'^amount2/', views.amount2, name='amount2'),
     url(r'^transfer/', views.transfer, name='transfer'),
-    url(r'^result/',views.result, name='result')
+    url(r'^result/',views.result, name='result'),
+    url(r'^edit/',views.edit, name='edit'),
 ]

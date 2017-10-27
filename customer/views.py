@@ -15,13 +15,12 @@ def index(request):
 
 @login_required
 def register(request):
-    #print(c)
-    u = User.objects.get(username=request.user.username)
-    customer = Customer(user=u)
-    #customer=get_object_or_404(Customer, user=u)
+    user = User.objects.get(username=request.user.username)
+    customer = Customer(user=user)
     form=CustomerForm(request.POST or None, instance=customer)
     context = {"customerform": form,
-               "form_url": reverse_lazy('customer:register')
+               "form_url": reverse_lazy('customer:register'),
+               "type":"register"
                }
     if request.method=="POST":
         #print("success")
@@ -30,6 +29,24 @@ def register(request):
             f.account_no=f.acc_no()
             f.save()
 
+            return HttpResponseRedirect(reverse('customer:index'))
+    return render(request, "register.html", context)
+
+@login_required
+def edit(request):
+    user = get_object_or_404(User, username=request.user.username)
+    customer = get_object_or_404(Customer, user=user)
+    form = CustomerForm(request.POST or None, instance=customer)
+    context = {"customerform": form,
+               "form_url": reverse_lazy('customer:edit'),
+               "type":"edit"
+               }
+    if request.method == "POST":
+        # print("success")
+        if form.is_valid():
+            f = form.save()
+            f.account_no = f.acc_no()
+            f.save()
             return HttpResponseRedirect(reverse('customer:index'))
     return render(request, "register.html", context)
 
