@@ -13,10 +13,6 @@
         <li><a href="{% url "customer:withdraw" %}">Withdraw Cash</a></li>
         <li><a href="{% url "customer:deposit" %}">Deposit Cash</a></li>
         <li><a href="{% url "customer:transfer" %}">Account Transfer</a></li>
-
-        {% if user.is_superuser %}
-            <li><a href="{% url "employee:index" %}">Employee Page</a> </li>
-            {% endif %}
     {% endif %}
     </ul>
 {% endblock %}

@@ -8,9 +8,15 @@
     <ul>
     {% if user.is_authenticated %}
         <h3>Welcome {{ user.username }}</h3>
-        <h4>Services</h4>
+        <h4>Customer Services</h4>
+        <li><a href="{% url "customer:edit" %}">Edit Profile</a></li>
+        <li><a href="{% url "customer:withdraw" %}">Withdraw Cash</a></li>
+        <li><a href="{% url "customer:deposit" %}">Deposit Cash</a></li>
+        <li><a href="{% url "customer:transfer" %}">Account Transfer</a></li>
+        <br><h4>Employee Services</h4>
         <li><a href="{% url "employee:customer" %}">Customer Details</a></li>
         <li><a href="{% url "employee:search" %}">Transaction Search</a></li>
+
     {% endif %}
     </ul>
 {% endblock %}

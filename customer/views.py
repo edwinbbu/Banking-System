@@ -1,9 +1,9 @@
 from decimal import Decimal
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 
 from .forms import CustomerForm
@@ -13,6 +13,8 @@ from transaction.models import Transaction
 
 @login_required
 def index(request):
+    if request.user.groups.filter(name='Employee').exists():
+        return HttpResponseRedirect(reverse('employee:index'))
     return render(request, "index.html")
 
 @login_required
@@ -30,7 +32,8 @@ def register(request):
             f=form.save()
             f.account_no=f.acc_no()
             f.save()
-
+            group=get_object_or_404(Group, name='Customer')
+            user.groups.add(group)
             return HttpResponseRedirect(reverse('customer:index'))
     return render(request, "register.html", context)
 
