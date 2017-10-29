@@ -11,7 +11,6 @@ from .models import Customer
 from transaction.models import Transaction
 # Create your views here.
 
-@login_required
 def index(request):
     if request.user.groups.filter(name='Employee').exists():
         return HttpResponseRedirect(reverse('employee:index'))

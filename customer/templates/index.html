@@ -13,6 +13,10 @@
         <li><a href="{% url "customer:withdraw" %}">Withdraw Cash</a></li>
         <li><a href="{% url "customer:deposit" %}">Deposit Cash</a></li>
         <li><a href="{% url "customer:transfer" %}">Account Transfer</a></li>
+        {% else %}
+        <li><a href="{% url "account_login" %}">Login</a></li>
+        <li><a href="{% url "account_signup" %}">Customer Signup</a></li>
+        <li><a href="{% url "account_signup" %}">Employee Signup</a></li>
     {% endif %}
     </ul>
 {% endblock %}
